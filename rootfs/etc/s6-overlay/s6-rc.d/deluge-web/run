@@ -7,4 +7,4 @@ source /root/.profile
 cd /config
 
 # run with limited permissions
-exec s6-setuidgid $PUID:$PGID deluged --loglevel info --do-not-daemonize --config=/config --outgoing-interface="$WG_DEV"
+exec s6-setuidgid $PUID:$PGID deluge-web --loglevel none --do-not-daemonize --config=/config --interface="$LAN_IP"

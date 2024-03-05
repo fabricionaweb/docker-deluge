@@ -1,7 +1,0 @@
-#!/usr/bin/with-contenv sh
-
-# change chdir
-cd /config
-
-# run with limited permissions
-exec s6-setuidgid $PUID:$PGID deluge-web --do-not-daemonize --config=/config

@@ -48,7 +48,7 @@ ENV S6_VERBOSITY=0 S6_BEHAVIOUR_IF_STAGE2_FAILS=2 PUID=65534 PGID=65534
 ENV ENV="/root/.profile" HOME="/config"
 WORKDIR /config
 VOLUME /config
-EXPOSE 8080
+EXPOSE 8112
 
 # copy files
 COPY --from=build-backend /build /build

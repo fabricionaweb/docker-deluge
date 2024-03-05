@@ -1,5 +1,9 @@
 #!/usr/bin/with-contenv sh
 
+if [[ -z "$USE_VPN" ]]; then
+  exit 0
+fi
+
 # load network variables
 source /root/.profile
 
