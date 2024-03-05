@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv sh
 
-if [[ -z "$USE_VPN" ]]; then
+if [[ -n "$DISABLE_VPN" ]]; then
   exit 0
 fi
 

@@ -4,7 +4,7 @@ Just another Deluge image. But compiled from the source.
 
 **Environments**
 
-- `USE_VPN` set it to require VPN
+- `DISABLE_VPN` set it to disable VPN
 
 **Needed docker arguments**
 
