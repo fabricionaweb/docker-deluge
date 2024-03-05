@@ -1,5 +1,7 @@
 Just another Deluge image. But compiled from the source.
 
+Not fully tested. Not stable. WIP
+
 ---
 
 **Environments**
