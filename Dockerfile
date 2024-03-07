@@ -24,6 +24,11 @@ ARG BRANCH
 ARG VERSION
 ADD https://github.com/deluge-torrent/deluge.git#${BRANCH:-deluge-$VERSION} ./
 
+# apply available patches
+RUN apk add --no-cache patch
+COPY patches ./
+RUN find ./ -name "*.patch" -print0 | sort -z | xargs -t -0 -n1 patch -p1 -i
+
 # deluge versioning
 RUN echo "$VERSION" > RELEASE-VERSION
 

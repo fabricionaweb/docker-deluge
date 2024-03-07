@@ -1,5 +1,13 @@
 #!/usr/bin/with-contenv sh
 
+LOGS_DIR="/config/logs"
+
+# check if logs folder exists and create it
+if [[ ! -d "$LOGS_DIR" ]]; then
+  install -dm755 -o $PUID -g $PGID "$LOGS_DIR"
+fi
+
+
 # load network variables
 source /root/.profile
 
@@ -7,4 +15,9 @@ source /root/.profile
 cd /config
 
 # run with limited permissions
-exec s6-setuidgid $PUID:$PGID deluged --loglevel info --do-not-daemonize --config=/config --outgoing-interface="$WG_DEV"
+exec s6-setuidgid $PUID:$PGID deluged \
+    --do-not-daemonize \
+    --config=/config \
+    --loglevel info --logfile="$LOGS_DIR/deluge.log" \
+    --read-only-config-keys=outgoing_interface \
+    --outgoing-interface="$WG_DEV"

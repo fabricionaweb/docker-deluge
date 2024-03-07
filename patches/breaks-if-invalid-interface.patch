@@ -1,0 +1,14 @@
+Allows Deluge to quit if outgoing_interface is invalid
+---
+diff --git a/deluge/common.py b/deluge/common.py
+index ecf90a390..d0038a54b 100644
+--- a/deluge/common.py
++++ b/deluge/common.py
+@@ -1017,7 +1017,7 @@ def is_interface_name(name):
+         try:
+             socket.if_nametoindex(name)
+         except OSError:
+-            pass
++            return False
+         else:
+             return True
