@@ -11,6 +11,13 @@ fi
 # load network variables
 source /root/.profile
 
+LOGS_DIR="/config/logs"
+
+# check if logs folder exists and create it
+if [[ ! -d "$LOGS_DIR" ]]; then
+  install -dm755 -o $PUID -g $PGID "$LOGS_DIR"
+fi
+
 # change chdir
 cd /config
 
