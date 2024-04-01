@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+echo "Disabled, use: deluged, deluge-console or deluge-web"

@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# change chdir
+cd /config
+
+# run with limited permissions
+exec s6-setuidgid $PUID:$PGID /usr/bin/deluged \
+    --do-not-daemonize \
+    --config=/config \
+    "$@"

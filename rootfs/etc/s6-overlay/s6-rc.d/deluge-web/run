@@ -3,8 +3,7 @@
 # load network variables
 source /root/.profile
 
-# change chdir
-cd /config
-
-# run with limited permissions
-exec s6-setuidgid $PUID:$PGID deluge-web --loglevel none --do-not-daemonize --config=/config --interface="$LAN_IP"
+# run with limited permissions (from /usr/local/bin)
+exec deluge-web \
+    --loglevel info \
+    --interface="$LAN_IP"
