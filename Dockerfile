@@ -39,6 +39,7 @@ COPY patches/libtorrent ./
 RUN find ./ -name "*.patch" -print0 | sort -z | xargs -t -0 -n1 patch -p1 -i
 
 # build libtorrent
+ENV DESTDIR=/build/rootfs
 RUN cmake -B /build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -46,7 +47,7 @@ RUN cmake -B /build -G Ninja \
         -Dpython-bindings=ON \
         -Dpython-egg-info=ON && \
     cmake --build /build && \
-    DESTDIR=/build/rootfs cmake --install /build
+    cmake --install /build
 
 # backend stage ================================================================
 FROM base AS build-backend
